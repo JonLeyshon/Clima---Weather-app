@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.searchBar {
+  @apply flex items-center w-screen p-2 xl:w-fit  rounded-lg;
+}
