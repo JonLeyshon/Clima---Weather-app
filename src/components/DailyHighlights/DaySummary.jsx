@@ -1,19 +1,27 @@
-const DaySummary = () => {
+const DaySummary = ({ weatherData }) => {
+  const {
+    dt = 0,
+    main = {},
+    sys = {},
+    timezone = 0,
+    weather = [{}],
+    wind = {},
+    rain = {},
+  } = weatherData || {};
+  console.log(weatherData);
+
   return (
-    <div>
+    <div className="p-10">
       <div className="temp">
-        <p> 12 &deg; C</p>
+        <p className="text-8xl"> {Math.floor(main.temp)}&deg;C</p>
       </div>
-      <div className="day">
-        <p> Monday</p>
+      <div className="day flex ">
+        <p className="mr-2"> Monday</p>
         <p>Time</p>
       </div>
       <div className="desc">
         <div className="weather">
-          <p>Mostly Cloudy</p>
-        </div>
-        <div className="prescip">
-          <p>Rain</p>
+          <p>{weather[0].description}</p>
         </div>
       </div>
     </div>
