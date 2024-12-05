@@ -1,7 +1,13 @@
-import { animationsPathsDay, animationsPathsNight } from "../amimationsPath";
+import { useSelector } from "react-redux";
+import {
+  animationsPathsDay,
+  animationsPathsNight,
+} from "../Utils/amimationsPath";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { selectCurrentWeather } from "../../redux/currentWeatherSice";
 
-const AnimatedWeather = ({ weatherData }) => {
+const AnimatedWeather = () => {
+  const weatherData = useSelector(selectCurrentWeather);
   const calculateIsItDayOrNight = () => {
     if (!weatherData || !weatherData.sys) return null;
     const { dt } = weatherData;
@@ -10,8 +16,7 @@ const AnimatedWeather = ({ weatherData }) => {
   };
 
   const handleWeatherPath = () => {
-    if (!weatherData) return null;
-
+    if (!weatherData) return "loading...";
     const { main, description } = weatherData.weather[0]; // Get weather info
     const isDay = calculateIsItDayOrNight() === "day";
     const animationsPaths = isDay ? animationsPathsDay : animationsPathsNight;
@@ -58,7 +63,7 @@ const AnimatedWeather = ({ weatherData }) => {
         break;
 
       default:
-        path = null; // This shouldn't happen if you handle all cases
+        path = null;
     }
 
     return path ? `/img/animations/${path}` : null;
@@ -75,7 +80,7 @@ const AnimatedWeather = ({ weatherData }) => {
       <Player
         autoplay
         loop
-        src={animationPath} // Use the dynamically chosen animation path
+        src={animationPath}
         style={{ height: "300px", width: "300px" }}
       />
     </div>
