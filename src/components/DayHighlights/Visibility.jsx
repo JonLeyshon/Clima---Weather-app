@@ -6,6 +6,7 @@ const Visibility = () => {
   const { visibility } = weatherData || 0;
   const visibilityInMiles = (visibility / 1609.344).toFixed(1);
 
+  //Calculate description and emoji path based on api
   const calculateVisibility = (val) => {
     if (val <= 1.9) {
       return { desc: "Poor Visibility", path: "/img/png/emojis/bad.png" };
@@ -27,14 +28,18 @@ const Visibility = () => {
     <div className="highlightContainer">
       <h2 className="highlightTitle">Visibility</h2>
       <div className="flex items-end">
-        <p className="text-6xl mr-2">{visibilityInMiles}</p>
-        <p className="text-xl">miles</p>
+        <p className="highlightMain mr-2">{visibilityInMiles}</p>
+        <p className="highlightSub">miles</p>
       </div>
       <div className="flex items-center">
-        <p className="text-xl mr-2">
+        <p className="highlightSub mr-2">
           {calculateVisibility(visibilityInMiles).desc}
         </p>
-        <img src={calculateVisibility(visibilityInMiles).path} alt="" />
+        <img
+          src={calculateVisibility(visibilityInMiles).path}
+          alt=""
+          className="w-6"
+        />
       </div>
     </div>
   );

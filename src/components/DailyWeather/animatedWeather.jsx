@@ -1,10 +1,7 @@
 import { useSelector } from "react-redux";
-import {
-  animationsPathsDay,
-  animationsPathsNight,
-} from "../Utils/amimationsPath";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { selectCurrentWeather } from "../../redux/currentWeatherSice";
+import Spinner from "../Utils/Spinner";
 
 const AnimatedWeather = () => {
   const weatherData = useSelector(selectCurrentWeather);
@@ -18,11 +15,10 @@ const AnimatedWeather = () => {
 
   const handleWeatherPath = () => {
     if (!weatherData) return "loading...";
-    const { main, description } = weatherData.weather[0]; // Get weather info
+    const { main, description } = weatherData.weather[0];
     const isDay = calculateIsItDayOrNight() === "day";
-    const animationsPaths = isDay ? animationsPathsDay : animationsPathsNight;
 
-    // Switch statement to decide path
+    // Switch statement to decide path based off of the main or the description for clouds as there are more clouds options.
     let path;
     switch (main) {
       case "Clear":
@@ -75,11 +71,13 @@ const AnimatedWeather = () => {
   return (
     <div className="flex flex-col justify-center items-center">
       <p className="text-2xl pt-10">
-        {weatherData
-          ? `${weatherData.name}${
-              weatherData.sys.country ? `, ${weatherData.sys.country}` : ""
-            }`
-          : "Loading..."}
+        {weatherData ? (
+          `${weatherData.name}${
+            weatherData.sys.country ? `, ${weatherData.sys.country}` : ""
+          }`
+        ) : (
+          <Spinner />
+        )}
       </p>
 
       <Player

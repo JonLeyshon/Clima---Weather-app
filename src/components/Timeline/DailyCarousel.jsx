@@ -2,6 +2,7 @@ import Spinner from "../Utils/Spinner";
 
 const DailyCarousel = ({ date_epoch, day }) => {
   if (!date_epoch || !day) {
+    //skeleton of daily card until api returns
     return (
       <div className="w-28 h-36 rounded-md bg-white m-auto flex justify-center items-center ">
         <Spinner />

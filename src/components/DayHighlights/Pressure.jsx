@@ -6,6 +6,7 @@ const Pressure = () => {
   const weatherData = useSelector(selectCurrentWeather);
   const { pressure } = weatherData?.main || 1013;
 
+  //return text for pressure condition
   const calculatePressureCondition = (val) => {
     if (val < 1010) {
       return "Low";
@@ -19,10 +20,10 @@ const Pressure = () => {
   return (
     <div className="highlightContainer">
       <h2 className="highlightTitle">Pressure</h2>
-      <div className="mb-4 flex flex-col justify-center items-center">
-        <div className="flex mb-4">
-          <p className="text-6xl mr-2">{pressure}</p>
-          <p className="text-2xl">hPa</p>
+      <div className=" flex flex-col justify-center items-center">
+        <div className="flex">
+          <p className="highlightMain mr-2">{pressure}</p>
+          <p className="highlightSub">hPa</p>
         </div>
         <div>
           <ProgressBar
@@ -33,7 +34,7 @@ const Pressure = () => {
         </div>
       </div>
       <div>
-        <p className="text-xl">{calculatePressureCondition(pressure)}</p>
+        <p className="highlightSub">{calculatePressureCondition(pressure)}</p>
       </div>
     </div>
   );

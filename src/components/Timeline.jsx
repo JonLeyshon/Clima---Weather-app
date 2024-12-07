@@ -17,7 +17,6 @@ const TimeLine = () => {
   const locationSearch = useSelector(selectLocationInput);
   const dispatch = useDispatch();
 
-  // Handle selection change
   const handleSelectionClickAndDispatch = (val) => {
     setSelection(val);
     dispatch(setTimeLineSelection(val));
@@ -45,6 +44,7 @@ const TimeLine = () => {
       </div>
 
       <div className="">
+        {/* Map over timelineWeather and return elements */}
         {timeLineWeather.length > 0 && (
           <Carousel responsive={responsive}>
             {timeLineWeather.map((item, index) => {

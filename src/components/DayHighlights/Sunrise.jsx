@@ -6,6 +6,7 @@ const Sunrise = () => {
   const { sunrise, sunset } = weatherData?.sys || 0;
   const { timezone } = weatherData || 0;
 
+  //calculate sunrise and sunset time and convert to timezone of searched location
   const calculateTime = (dt) => {
     const localUnixTime = dt + timezone;
     const date = new Date(localUnixTime * 1000);
@@ -27,7 +28,7 @@ const Sunrise = () => {
             className="arrowIcon"
           />
         </div>
-        <p className="text-xl">{calculateTime(sunrise)}</p>
+        <p className="highlightSmall">{calculateTime(sunrise)}</p>
       </div>
       <div className="flex items-center">
         <div className="gradientButton mr-2">
@@ -37,7 +38,7 @@ const Sunrise = () => {
             className="arrowIcon"
           />
         </div>
-        <p className="text-xl">{calculateTime(sunset)}</p>
+        <p className="highlightSmall">{calculateTime(sunset)}</p>
       </div>
     </div>
   );

@@ -1,52 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectLocationInput,
-  setLocationInput,
-} from "../../redux/UserInputSlice";
-import { useEffect, useState } from "react";
-import { fetchCoordsByCity } from "../Utils/GetDataFunctions";
+import { setLocationInput } from "../../redux/UserInputSlice";
+import { useState } from "react";
 import { setCoords } from "../../redux/UserInputSlice";
 import Spinner from "../Utils/Spinner";
 import LocationSearch from "./LocationSearch";
+import { Tooltip } from "react-tooltip";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const locationSearch = useSelector(selectLocationInput);
-  const [searchInput, setSearchInput] = useState("");
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
 
-  const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  // const handleSearchClick = async () => {
-  //   setLoading(true); // Start loading
-  //   dispatch(setLocationInput(searchInput));
-  //   await fetchAndDispatchCoords(); // Fetch coordinates
-  //   setLoading(false); // Stop loading
-  // };
-
-  const handleEnterKey = async (e) => {
-    if (e.key === "Enter") {
-      setLoading(true); // Start loading
-      dispatch(setLocationInput(searchInput));
-      await fetchAndDispatchCoords(); // Fetch coordinates
-      setLoading(false); // Stop loading
-    }
-  };
-
-  const fetchAndDispatchCoords = async () => {
-    const coordinates = await fetchCoordsByCity(locationSearch);
-    if (coordinates) {
-      dispatch(setCoords(coordinates));
-    }
-  };
-
-  useEffect(() => {
-    if (!locationSearch) return;
-    fetchAndDispatchCoords();
-  }, [locationSearch]);
-
+  //obtain the user's location using browser built in geolocation
   const getCurrentLocation = async () => {
     if (navigator.geolocation) {
       setLoading(true); // Start loading
@@ -55,7 +19,6 @@ const SearchBar = () => {
           const { latitude, longitude } = position.coords;
           dispatch(setCoords({ lat: latitude, lon: longitude }));
           dispatch(setLocationInput(""));
-          setSearchInput("");
           setLoading(false); // Stop loading
         },
         (error) => {
@@ -72,16 +35,23 @@ const SearchBar = () => {
     <>
       <div className="searchBar m-auto w-fit ">
         <div className="min-w-[20rem] m-auto lg:m-0 flex justify-between items-center border-gray-300 bg-white border-2 rounded-md focus-within:border-blue-500 focus-within:ring focus-within:ring-blue-200">
-          <LocationSearch handleEnterKey={handleEnterKey} />
+          <LocationSearch />
           {loading ? (
-            <Spinner /> // Show spinner when loading
+            <Spinner />
           ) : (
-            <img
-              src="/img/svg/find-me-icon.svg"
-              alt="Find me"
-              className="w-12 p-1 hover:bg-slate-200 rounded-full cursor-pointer"
-              onClick={getCurrentLocation}
-            />
+            <>
+              <Tooltip
+                id="find-location-tooltip"
+                content="Find your location"
+              />
+              <img
+                src="/img/svg/find-me-icon.svg"
+                alt="Find me"
+                className="w-12 p-1 hover:bg-slate-200 rounded-full cursor-pointer"
+                onClick={getCurrentLocation}
+                data-tooltip-id="find-location-tooltip"
+              />
+            </>
           )}
         </div>
       </div>

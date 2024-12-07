@@ -1,30 +1,12 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import DaySummary from "./DailyWeather/DaySummary";
 import SearchBar from "./DailyWeather/SearchBar";
 import AnimatedWeather from "./DailyWeather/animatedWeather";
-import {
-  fetchCurrentWeatherData,
-  fetchCurrentWeatherDataByCoords,
-} from "./Utils/GetDataFunctions";
-import {
-  selectLocationInput,
-  selectCoords,
-  setLocationInput,
-} from "../redux/UserInputSlice";
-import {
-  selectCurrentWeather,
-  setCurrentWeather,
-} from "../redux/currentWeatherSice";
+import { selectCurrentWeather } from "../redux/currentWeatherSice";
 import Spinner from "./Utils/Spinner";
 
 const DailyWeather = () => {
   const currentWeatherData = useSelector(selectCurrentWeather);
-  const locationSearch = useSelector(selectLocationInput);
-  const coords = useSelector(selectCoords);
-  const dispatch = useDispatch();
-
-  useEffect(() => {}, [currentWeatherData]);
 
   if (!currentWeatherData.main) {
     return <Spinner />;

@@ -19,11 +19,13 @@ const WholeCard = () => {
   const timelineSelection = useSelector(selectTimeLineSelection);
   const dispatch = useDispatch();
 
+  // retrieve the current weather by coords
   const handleCurrentWeatherData = async () => {
     const res = await fetchCurrentWeatherData(coords.lat, coords.lon);
     dispatch(setCurrentWeather(res));
   };
 
+  //retrieve timeline weather based on week or hourly selection
   const handleTimeLineWeatherData = async (selection) => {
     if (selection === "Week") {
       const res = await fetchDailyWeather(coords.lat, coords.lon);
@@ -33,6 +35,8 @@ const WholeCard = () => {
       dispatch(setTimelineWeather(res));
     }
   };
+
+  //retrieve weather everytime the coordinates or timeline selection changes
 
   useEffect(() => {
     handleCurrentWeatherData();
@@ -48,7 +52,6 @@ const WholeCard = () => {
           <DailyHighlights />
         </div>
       </div>
-      {/* <GooglePrediction /> */}
     </>
   );
 };

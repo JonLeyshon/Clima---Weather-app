@@ -1,3 +1,4 @@
+// responsive sizes for the timeline carousel
 export const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 1400 },

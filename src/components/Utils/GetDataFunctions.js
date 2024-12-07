@@ -2,17 +2,7 @@ import axios from "axios";
 const openWeatherMapApiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 const weatherStackApiKey = process.env.REACT_APP_WEATHER_STACK_API_KEY;
 
-export const fetchCoordsByCity = async (city) => {
-  try {
-    const res =
-      await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${openWeatherMapApiKey}
-        `);
-    return { lat: res.data[0].lat, lon: res.data[0].lon };
-  } catch (error) {
-    console.error("Error fetching coords", error);
-  }
-};
-
+//Obtain current weather for daily card and daily highlights from openweathermap api
 export const fetchCurrentWeatherData = async (lat, lon) => {
   try {
     const res = await axios.get(
@@ -24,6 +14,8 @@ export const fetchCurrentWeatherData = async (lat, lon) => {
   }
 };
 
+//Obtain weather for the next seven updates of weather.
+// As the Openweatherapi returns 5 days, this reduces the results array to 7 to improve consistency.
 export const fetchThreeHourlyWeather = async (lat, lon) => {
   try {
     const res = await axios.get(
@@ -36,6 +28,7 @@ export const fetchThreeHourlyWeather = async (lat, lon) => {
   }
 };
 
+//Obtain weather for daily, as the openweatherapi doesn't offer daily weather on a free subscription, I have used weather stack.
 export const fetchDailyWeather = async (lat, lon) => {
   try {
     const res = await axios.get(
@@ -47,6 +40,7 @@ export const fetchDailyWeather = async (lat, lon) => {
   }
 };
 
+//Obtain the UV index, this is not included in the current weather call.
 export const fetchUvIndex = async (lat, lon) => {
   try {
     const res = await axios.get(
@@ -64,6 +58,8 @@ export const fetchUvIndex = async (lat, lon) => {
   }
 };
 
+//Autofill to help searching from LocationIQ Api
+
 export const fetchLocationPredictions = async (query) => {
   const apiKey = process.env.REACT_APP_LOCATIONIQ_API_KEY;
 
@@ -74,8 +70,8 @@ export const fetchLocationPredictions = async (query) => {
       `https://us1.locationiq.com/v1/search.php?key=${apiKey}&q=${query}&format=json`
     );
 
-    // Return the first 5 suggestions (you can adjust this as needed)
-    return response.data.slice(0, 5); // Assuming response.data is an array of location suggestions
+    // Return the first 5 suggestions
+    return response.data.slice(0, 5);
   } catch (error) {
     console.error("Error fetching location predictions:", error);
     return [];

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// Custom hook to avoid too many calls to the locationIQ api as this crashes easily with too many searches.
 const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
