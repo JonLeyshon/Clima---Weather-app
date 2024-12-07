@@ -7,6 +7,7 @@ export const responsive = {
     breakpoint: { max: 1400, min: 725 },
     items: 5,
   },
+
   tablet: {
     breakpoint: { max: 725, min: 550 },
     items: 4,

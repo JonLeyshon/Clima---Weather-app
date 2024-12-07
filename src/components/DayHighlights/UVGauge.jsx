@@ -8,7 +8,6 @@ const UVGuage = () => {
   const locationSearch = useSelector(selectLocationInput);
   const coords = useSelector(selectCoords);
   const [uvData, setUvData] = useState(0);
-
   useEffect(() => {
     const getUvData = async () => {
       const res = await fetchUvIndex(coords.lat, coords.lon);
@@ -16,14 +15,6 @@ const UVGuage = () => {
     };
     getUvData();
   }, [coords]);
-
-  // const getColour = (value) => {
-  //   if (value <= 2) return "#00E400";
-  //   if (value <= 5) return "#FFDD00";
-  //   if (value <= 7) return "#FF7700";
-  //   if (value <= 10) return "#FF0000";
-  //   return "#8B00FF";
-  // };
 
   return (
     <>

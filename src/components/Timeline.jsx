@@ -6,7 +6,7 @@ import {
 } from "../redux/UserInputSlice";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { responsive } from "../carouselResponsiveness";
+import { responsive } from "./Utils/carouselResponsiveness";
 import DailyCarousel from "./Timeline/DailyCarousel";
 import HourlyCarousel from "./Timeline/HourlyCarousel";
 import { selectTimelineWeather } from "../redux/timelineWeatherSlice";
@@ -24,7 +24,7 @@ const TimeLine = () => {
   };
 
   return (
-    <div className="pb-6">
+    <div className="pb-6 bg-slate-50">
       <div className="flex justify-center xl:justify-start text-2xl pb-6">
         <p
           className={`mr-2 cursor-pointer ${
@@ -44,7 +44,7 @@ const TimeLine = () => {
         </p>
       </div>
 
-      <div>
+      <div className="">
         {timeLineWeather.length > 0 && (
           <Carousel responsive={responsive}>
             {timeLineWeather.map((item, index) => {

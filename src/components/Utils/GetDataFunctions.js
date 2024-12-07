@@ -54,21 +54,30 @@ export const fetchUvIndex = async (lat, lon) => {
     );
 
     // Return the UV Index data
-    return Math.round(res.data.value);
+    if (res.data.value > 12) {
+      return 12;
+    }
+    return Math.floor(res.data.value);
   } catch (error) {
     console.error("Error fetching UV Index:", error);
     return null;
   }
 };
 
-export const fetchLocationPredictions = async (input) => {
+export const fetchLocationPredictions = async (query) => {
+  const apiKey = process.env.REACT_APP_LOCATIONIQ_API_KEY;
+
+  if (!query) return [];
+
   try {
-    const res = await axios.get(
-      `https://api.locationiq.com/v1/autocomplete?key=pk.5a326af18441beab39aa38823eac5ea9&q=${input}&limit=5&dedupe=1`
+    const response = await axios.get(
+      `https://us1.locationiq.com/v1/search.php?key=${apiKey}&q=${query}&format=json`
     );
-    return res;
+
+    // Return the first 5 suggestions (you can adjust this as needed)
+    return response.data.slice(0, 5); // Assuming response.data is an array of location suggestions
   } catch (error) {
-    console.error("Error finding predictions", error);
-    return null;
+    console.error("Error fetching location predictions:", error);
+    return [];
   }
 };

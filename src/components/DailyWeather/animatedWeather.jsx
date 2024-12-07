@@ -8,6 +8,7 @@ import { selectCurrentWeather } from "../../redux/currentWeatherSice";
 
 const AnimatedWeather = () => {
   const weatherData = useSelector(selectCurrentWeather);
+
   const calculateIsItDayOrNight = () => {
     if (!weatherData || !weatherData.sys) return null;
     const { dt } = weatherData;
@@ -74,7 +75,11 @@ const AnimatedWeather = () => {
   return (
     <div className="flex flex-col justify-center items-center">
       <p className="text-2xl pt-10">
-        {weatherData ? `${weatherData.name}` : "Loading..."}
+        {weatherData
+          ? `${weatherData.name}${
+              weatherData.sys.country ? `, ${weatherData.sys.country}` : ""
+            }`
+          : "Loading..."}
       </p>
 
       <Player

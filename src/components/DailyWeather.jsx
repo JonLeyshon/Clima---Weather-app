@@ -31,7 +31,7 @@ const DailyWeather = () => {
   }
 
   return (
-    <div className="">
+    <div className="h-full bg-slate-50">
       <div className="text-center flex justify-center">
         <img
           src="/img/png/logo-no-background.png"

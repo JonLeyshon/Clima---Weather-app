@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .searchBar {
-  @apply flex items-center w-screen p-2 xl:w-fit  rounded-lg;
+  @apply flex items-center  p-2 xl:w-fit  rounded-lg;
 }
 
 .highlightContainer {
