@@ -1,4 +1,4 @@
-CLIMA - A modern weather web app
+**CLIMA **
 Your All-In-One Weather Companion for Every Day.
 
 Overview
@@ -29,8 +29,9 @@ OpenWeatherMap: Current and forecast weather data.
 LocationIQ: Geocoding and location services.
 Weatherstack: Additional weather insights for enhanced user experience.
 Deployment
-Hosted on [Hosting Platform: e.g., Vercel/Netlify].
-Installation and Setup
+Hosted on hostpresto.
+
+**Installation and Setup**
 Follow these steps to set up and run the project locally:
 
 Prerequisites
