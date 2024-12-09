@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+**CLIMA **
+Your All-In-One Weather Companion for Every Day.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview
+Sleek Weather Explorer is a modern and feature-rich weather app designed to provide comprehensive weather insights with style. Built with cutting-edge tools, it delivers detailed daily highlights, including UV index, humidity, sunrise and sunset times, and much more. The app dynamically adjusts its layout for an exceptional user experience on both phones and PCs, complemented by animated weather icons for added flair.
 
-## Available Scripts
+Features
+Comprehensive Weather Data:
+Current temperature, UV index, humidity, wind speed, and more.
+Sunrise and sunset times to plan your day better.
+Geolocation Support: Automatically detects your location using native geolocation.
+Search Capability: Search weather details for any city or region.
+Dynamic Design:
+Built with React and Tailwind CSS for a sleek, responsive design.
+Adaptive layouts ensure a seamless experience across devices.
+Weather Visualization: Animated weather icons provide a visually engaging experience.
+API Integration: Combines data from multiple APIs for accuracy and versatility:
+OpenWeatherMap for weather data.
+LocationIQ for geocoding and location search.
+Weatherstack for additional weather details.
+Tech Stack
+Frontend
+React: For building a dynamic and interactive user interface.
+Tailwind CSS: For modern, responsive, and customizable design.
+React Router: For seamless navigation.
+Icons and Animations: Weather animations using Lottie or CSS for smooth visuals.
+APIs
+OpenWeatherMap: Current and forecast weather data.
+LocationIQ: Geocoding and location services.
+Weatherstack: Additional weather insights for enhanced user experience.
+Deployment
+Hosted on hostpresto.
 
-In the project directory, you can run:
+**Installation and Setup**
+Follow these steps to set up and run the project locally:
 
-### `npm start`
+Prerequisites
+Node.js (v16+ recommended) and npm or yarn installed.
+API keys from the following services:
+OpenWeatherMap
+Weatherstack
+LocationIQ
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Installation
+Clone the repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+git clone https://github.com/JonLeyshon/Clima---Weather-app
+cd sleek-weather-explorer  
+Install the dependencies:
 
-### `npm test`
+bash
+Copy code
+npm install  
+Create a .env file in the root of the project directory and add your API keys:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+env
+Copy code
+REACT_APP_OPEN_WEATHER_API_KEY=your_openweather_api_key  
+REACT_APP_WEATHER_STACK_API_KEY=your_weatherstack_api_key  
+REACT_APP_LOCATIONIQ_API_KEY=your_locationiq_api_key  
+Start the development server:
 
-### `npm run build`
+bash
+Copy code
+npm start  
+Open your browser and navigate to http://localhost:3000.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Usage
+Allow location permissions for automatic weather detection.
+Use the search bar to find weather data for specific locations.
+Explore detailed daily highlights, including UV index, humidity, and sunrise/sunset times
