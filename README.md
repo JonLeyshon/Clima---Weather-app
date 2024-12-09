@@ -40,12 +40,13 @@ API keys from the following services:
 OpenWeatherMap
 Weatherstack
 LocationIQ
+
 Installation
 Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/sleek-weather-explorer.git  
+git clone https://github.com/JonLeyshon/Clima---Weather-app
 cd sleek-weather-explorer  
 Install the dependencies:
 
